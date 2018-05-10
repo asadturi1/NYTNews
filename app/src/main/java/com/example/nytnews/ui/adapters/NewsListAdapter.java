@@ -1,8 +1,11 @@
 package com.example.nytnews.ui.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.nytnews.model.NewsData;
 
 /**
  * Created by asadullah on 3/5/18.
@@ -10,7 +13,13 @@ import android.view.ViewGroup;
 
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsViewHolder> {
 
-    public NewsListAdapter() {
+    private Context context;
+    private NewsData newsPosts;
+
+    public NewsListAdapter(Context context, NewsData newsPosts) {
+        this.context = context;
+        this.newsPosts = newsPosts;
+
     }
 
     @Override
@@ -25,7 +34,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return newsPosts.getResults().size();
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder {

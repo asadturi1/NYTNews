@@ -1,8 +1,11 @@
 package com.example.nytnews.ui.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
@@ -21,7 +24,6 @@ import javax.inject.Inject;
 public class MainActivity extends AppCompatActivity implements MainScreenContract.View {
 
     private RecyclerView recyclerViewNews;
-    private FloatingActionButton fab;
     private NewsListAdapter newsAdapter;
     private Toolbar toolbar;
     @Inject
@@ -50,7 +52,11 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
 
     @Override
     public void showPosts(NewsData posts) {
-
+        newsAdapter = new NewsListAdapter(this,posts);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL,true);
+        recyclerViewNews.setLayoutManager(layoutManager);
+        recyclerViewNews.setAdapter(newsAdapter);
     }
 
     @Override
