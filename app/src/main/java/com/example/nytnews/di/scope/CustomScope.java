@@ -1,4 +1,4 @@
-package com.example.nytnews;
+package com.example.nytnews.di.scope;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

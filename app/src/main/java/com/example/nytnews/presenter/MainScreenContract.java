@@ -1,4 +1,4 @@
-package com.example.nytnews;
+package com.example.nytnews.presenter;
 
 import com.example.nytnews.model.NewsData;
 
@@ -17,5 +17,6 @@ public interface MainScreenContract {
 
     interface Presenter {
         void loadPost();
+        void onDestroy();
     }
 }

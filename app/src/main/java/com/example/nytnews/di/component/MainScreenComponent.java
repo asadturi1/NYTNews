@@ -1,7 +1,8 @@
-package com.example.nytnews;
+package com.example.nytnews.di.component;
 
-import com.example.nytnews.View.MainActivity.MainActivity;
-import com.example.nytnews.di.component.NetComponent;
+import com.example.nytnews.di.scope.CustomScope;
+import com.example.nytnews.di.module.MainScreenModule;
+import com.example.nytnews.ui.activities.MainActivity;
 
 import dagger.Component;
 

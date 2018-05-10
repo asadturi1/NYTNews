@@ -1,9 +1,7 @@
-package com.example.nytnews.View.MainActivity;
+package com.example.nytnews.ui.activities;
 
 import android.os.Bundle;
-import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -11,11 +9,11 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.nytnews.App;
 import com.example.nytnews.DaggerMainScreenComponent;
-import com.example.nytnews.MainScreenContract;
-import com.example.nytnews.MainScreenModule;
-import com.example.nytnews.MainScreenPresenter;
-import com.example.nytnews.NewsListAdapter;
+import com.example.nytnews.di.module.MainScreenModule;
 import com.example.nytnews.R;
+import com.example.nytnews.presenter.MainScreenContract;
+import com.example.nytnews.presenter.MainScreenPresenter;
+import com.example.nytnews.ui.adapters.NewsListAdapter;
 import com.example.nytnews.model.NewsData;
 
 import javax.inject.Inject;

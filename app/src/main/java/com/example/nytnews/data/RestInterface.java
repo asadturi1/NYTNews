@@ -1,4 +1,4 @@
-package com.example.nytnews;
+package com.example.nytnews.data;
 
 import com.example.nytnews.model.NewsData;
 

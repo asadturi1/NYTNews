@@ -1,8 +1,8 @@
-package com.example.nytnews;
+package com.example.nytnews.di.module;
 
-import com.example.nytnews.di.component.NetComponent;
+import com.example.nytnews.di.scope.CustomScope;
+import com.example.nytnews.presenter.MainScreenContract;
 
-import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 
