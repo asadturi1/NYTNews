@@ -2,6 +2,7 @@ package com.example.nytnews;
 
 import android.app.Application;
 
+import com.example.nytnews.data.Constants;
 import com.example.nytnews.di.component.DaggerNetComponent;
 import com.example.nytnews.di.component.NetComponent;
 import com.example.nytnews.di.module.NetModule;
@@ -22,7 +23,7 @@ public class App extends Application {
         super.onCreate();
 
         mNetComponent = DaggerNetComponent.builder().appModule(new AppModule(this))
-                .netModule(new NetModule("https://api.nytimes.com/"))
+                .netModule(new NetModule(Constants.baseUrl))
                 .build();
 
     }
