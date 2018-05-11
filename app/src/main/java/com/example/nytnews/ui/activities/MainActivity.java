@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
+
 import com.example.nytnews.App;
 import com.example.nytnews.DaggerMainScreenComponent;
 import com.example.nytnews.di.module.MainScreenModule;
@@ -55,11 +57,15 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
 
     @Override
     public void showError(String message) {
-
+        showToast(message);
     }
 
     @Override
     public void showComplete() {
 
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this,message,Toast.LENGTH_LONG).show();
     }
 }
