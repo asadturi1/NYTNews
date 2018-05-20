@@ -1,6 +1,7 @@
 package com.example.nytnews.di.module;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -21,26 +22,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by asadullah on 3/27/18.
  */
-@Module
+@Module(includes = ContextModule.class)
 public class NetModule {
-    String baseUrl;
 
-    public NetModule(String baseUrl){
-        this.baseUrl=baseUrl;
+    public NetModule(){
     }
 
-    @Provides
+  /*  @Provides
     @Singleton
     SharedPreferences providesSharedPreferences(Application application) {
         return PreferenceManager.getDefaultSharedPreferences(application);
-    }
+    }*/
 
 
     @Provides
     @Singleton
-    Cache provideHttpCache(Application application) {
+    Cache provideHttpCache(Context context) {
         int cacheSize = 10 * 1024 * 1024;
-        Cache cache = new Cache(application.getCacheDir(), cacheSize);
+        Cache cache = new Cache(context.getCacheDir(), cacheSize);
         return cache;
     }
 
@@ -60,15 +59,6 @@ public class NetModule {
         return client.build();
     }
 
-    @Provides
-    @Singleton
-    Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
-        return new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(baseUrl)
-                .client(okHttpClient)
-                .build();
-    }
+
 
 }

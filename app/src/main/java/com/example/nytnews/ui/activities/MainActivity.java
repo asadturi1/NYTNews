@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.nytnews.App;
-import com.example.nytnews.di.component.DaggerMainScreenComponent;
 import com.example.nytnews.di.module.MainScreenModule;
 import com.example.nytnews.R;
 import com.example.nytnews.presenter.MainScreenContract;

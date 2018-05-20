@@ -3,10 +3,10 @@ package com.example.nytnews;
 import android.app.Application;
 
 import com.example.nytnews.data.Constants;
-import com.example.nytnews.di.component.DaggerNetComponent;
+
 import com.example.nytnews.di.component.NetComponent;
-import com.example.nytnews.di.module.NetModule;
-import com.example.nytnews.di.module.module.AppModule;
+import com.example.nytnews.di.module.ApiClientModule;
+import com.example.nytnews.di.module.ContextModule;
 
 import dagger.internal.DaggerCollections;
 
@@ -22,8 +22,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        mNetComponent = DaggerNetComponent.builder().appModule(new AppModule(this))
-                .netModule(new NetModule(Constants.baseUrl))
+        mNetComponent = DaggerNetComponent.builder().appModule(new ContextModule(this))
+                .netModule(new ApiClientModule(Constants.baseUrl))
                 .build();
 
     }
