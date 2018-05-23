@@ -1,4 +1,4 @@
-package com.example.nytnews.di.module.module;
+package com.example.nytnews.di.module;
 
 import android.app.Application;
 
@@ -18,9 +18,8 @@ public class AppModule {
         this.application = application;
     }
 
-    @Singleton
     @Provides
-    Application getApplication(){
+    public Application getApplication(){
         return application;
     }
 }

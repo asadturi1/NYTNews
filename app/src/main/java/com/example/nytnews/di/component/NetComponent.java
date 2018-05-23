@@ -10,8 +10,8 @@ import com.example.nytnews.di.module.ApiClientModule;
 /**
  * Created by asadullah on 4/24/18.
  */
-@Singleton
-@Component(modules = {ApiClientModule.class} )
+
+@Component(modules = ApiClientModule.class)
 public interface NetComponent {
 
     Retrofit retrofit();

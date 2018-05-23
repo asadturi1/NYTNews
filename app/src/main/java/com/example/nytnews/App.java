@@ -2,13 +2,14 @@ package com.example.nytnews;
 
 import android.app.Application;
 
-import com.example.nytnews.data.Constants;
-
+import com.example.nytnews.di.component.DaggerNetComponent;
+import com.example.nytnews.di.component.MainScreenComponent;
 import com.example.nytnews.di.component.NetComponent;
-import com.example.nytnews.di.module.ApiClientModule;
 import com.example.nytnews.di.module.ContextModule;
 
-import dagger.internal.DaggerCollections;
+
+import retrofit2.Retrofit;
+
 
 /**
  * Created by asadullah on 4/24/18.
@@ -16,19 +17,19 @@ import dagger.internal.DaggerCollections;
 
 public class App extends Application {
 
-    private NetComponent mNetComponent;
+    private NetComponent netComponent;
+    private MainScreenComponent viewComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        mNetComponent = DaggerNetComponent.builder().appModule(new ContextModule(this))
-                .netModule(new ApiClientModule(Constants.baseUrl))
-                .build();
+        netComponent = DaggerNetComponent.builder().contextModule(new ContextModule(this)).build();
+      //  viewComponent =
 
     }
 
-    public NetComponent getNetComponent(){
-        return this.mNetComponent;
+    public Retrofit getNetComponent(){
+        return netComponent.retrofit();
     }
 }

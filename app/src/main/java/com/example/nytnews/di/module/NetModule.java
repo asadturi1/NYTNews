@@ -36,24 +36,21 @@ public class NetModule {
 
 
     @Provides
-    @Singleton
-    Cache provideHttpCache(Context context) {
+    public Cache provideHttpCache(Context context) {
         int cacheSize = 10 * 1024 * 1024;
         Cache cache = new Cache(context.getCacheDir(), cacheSize);
         return cache;
     }
 
     @Provides
-    @Singleton
-    Gson provideGson() {
+    public Gson provideGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
       //  gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
         return gsonBuilder.create();
     }
 
     @Provides
-    @Singleton
-    OkHttpClient provideOkhttpClient(Cache cache) {
+    public OkHttpClient provideOkhttpClient(Cache cache) {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         client.cache(cache);
         return client.build();

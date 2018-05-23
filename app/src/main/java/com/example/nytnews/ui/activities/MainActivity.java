@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.nytnews.App;
+import com.example.nytnews.di.component.DaggerMainScreenComponent;
+import com.example.nytnews.di.module.ContextModule;
 import com.example.nytnews.di.module.MainScreenModule;
 import com.example.nytnews.R;
 import com.example.nytnews.presenter.MainScreenContract;
@@ -29,13 +31,13 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
         setContentView(R.layout.activity_main);
         bindViews();
         setSupportActionBar(toolbar);
-        mainPresenter.loadPost();
+
 
         DaggerMainScreenComponent.builder()
-                .netComponent(((App) getApplicationContext()).getNetComponent())
+                .contextModule(new ContextModule(this))
                 .mainScreenModule(new MainScreenModule(this))
                 .build().inject(this);
-
+        mainPresenter.loadPost();
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.nytnews.di.module;
 
+import com.example.nytnews.data.Constants;
 import com.google.gson.Gson;
 
 import javax.inject.Singleton;
@@ -18,19 +19,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClientModule {
 
 
-    String baseUrl;
-
-    public ApiClientModule(String baseUrl){
-        this.baseUrl=baseUrl;
+    public ApiClientModule(){
     }
 
     @Provides
-    @Singleton
-    Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
+    public Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(baseUrl)
+                .baseUrl(Constants.baseUrl)
                 .client(okHttpClient)
                 .build();
     }
