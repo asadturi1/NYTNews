@@ -15,7 +15,7 @@ import dagger.Component;
     @CustomScope
     @Component(modules = {MainScreenModule.class,ApiClientModule.class})
     public interface MainScreenComponent {
-        void inject(MainActivity activity);
+        void injectMainActivity(MainActivity activity);
         MainScreenPresenter getPresenter();
     }
 

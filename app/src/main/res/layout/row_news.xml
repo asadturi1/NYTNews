@@ -7,7 +7,10 @@
     <TextView
         android:id="@+id/newheading_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:textColor="@android:color/black"
+        android:padding="8dp"
+        android:textSize="16sp"/>
 
 
     </RelativeLayout>

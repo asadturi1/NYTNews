@@ -2,6 +2,7 @@ package com.example.nytnews.ui.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +26,13 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
 
     @Override
     public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.row_news,parent,false);
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_news,parent,false);
+        NewsViewHolder viewHolder = new NewsViewHolder(view);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
-
         holder.newsText.setText(newsPosts.getResults().get(position).getTitle());
 
     }

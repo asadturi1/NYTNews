@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nytnews.App;
 import com.example.nytnews.di.component.DaggerMainScreenComponent;
+import com.example.nytnews.di.component.MainScreenComponent;
 import com.example.nytnews.di.module.ContextModule;
 import com.example.nytnews.di.module.MainScreenModule;
 import com.example.nytnews.R;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
     private RecyclerView recyclerViewNews;
     private NewsListAdapter newsAdapter;
     private Toolbar toolbar;
+
+    MainScreenComponent mainScreenComponent;
     @Inject
     MainScreenPresenter mainPresenter;
     @Override
@@ -33,10 +37,11 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
         setSupportActionBar(toolbar);
 
 
-        DaggerMainScreenComponent.builder()
+      mainScreenComponent =  DaggerMainScreenComponent.builder()
                 .contextModule(new ContextModule(this))
                 .mainScreenModule(new MainScreenModule(this))
-                .build().inject(this);
+                .build();
+      mainScreenComponent.injectMainActivity(this);
         mainPresenter.loadPost();
 
     }
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
     public void showPosts(NewsData posts) {
         newsAdapter = new NewsListAdapter(posts);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,
-                LinearLayoutManager.VERTICAL,true);
+                LinearLayoutManager.VERTICAL,false);
         recyclerViewNews.setLayoutManager(layoutManager);
         recyclerViewNews.setAdapter(newsAdapter);
     }

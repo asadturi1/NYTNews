@@ -2,6 +2,7 @@ package com.example.nytnews;
 
 import android.app.Application;
 
+
 import com.example.nytnews.di.component.DaggerNetComponent;
 import com.example.nytnews.di.component.MainScreenComponent;
 import com.example.nytnews.di.component.NetComponent;
@@ -24,7 +25,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        netComponent = DaggerNetComponent.builder().contextModule(new ContextModule(this)).build();
+        netComponent =  DaggerNetComponent.builder().contextModule(new ContextModule(this)).build();
       //  viewComponent =
 
     }
